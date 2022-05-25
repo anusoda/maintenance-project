@@ -1,4 +1,6 @@
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 
 
@@ -52,18 +54,17 @@ public class PlayHandler {
 				{
 					song.setUrl(url);
 					@SuppressWarnings("unused")
-					Process p = Runtime.getRuntime().exec("cmd /c start " + song.getURL());
+					Process p = Runtime.getRuntime().exec("open " + song.getURL());
 				}
 				else
 				{
 					@SuppressWarnings("unused")
-					Process p = Runtime.getRuntime().exec("cmd /c start " + song.getURL());
+					Process p = Runtime.getRuntime().exec("open " + song.getURL());
 				}
 			}
-			else
-			{
+			else {
 				@SuppressWarnings("unused")
-				Process p = Runtime.getRuntime().exec("cmd /c start " + song.getURL());
+				Process p = Runtime.getRuntime().exec("open " + song.getURL());
 			}
 		} catch(IOException e1) { e1.printStackTrace(); }
 	}
