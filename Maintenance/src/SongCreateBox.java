@@ -145,8 +145,7 @@ public class SongCreateBox implements ActionListener, KeyListener
 			{
 				box1.setText(" ");
 			}
-			if(!box2.getText().contains("http://"))
-			{
+			if(!(box2.getText().contains("http://") || box2.getText().contains("https://"))) {
 				box2.setText("http://" + box2.getText());
 			}
 			data.add(box1.getText());
