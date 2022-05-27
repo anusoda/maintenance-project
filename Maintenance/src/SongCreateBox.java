@@ -93,6 +93,8 @@ public class SongCreateBox implements ActionListener, KeyListener
 		c.gridx = 2;
 		c.gridy = 4;
 		panel.add(search, c);
+		label3.setVisible(false);
+		box3.setVisible(false);
 		frame.add(panel);
 		frame.setVisible(true);
 		frame.setSize(new Dimension(500, 200));
