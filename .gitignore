@@ -11,10 +11,10 @@
 .mtj.tmp/
 
 # IDE stuff
-.vscode/
-.project
-.metadata/
-.classpath
+maintenance/.vscode/
+*.project
+maintenance/.metadata/
+*.classpath
 
 # Package Files #
 *.jar
