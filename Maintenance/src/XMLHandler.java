@@ -13,8 +13,9 @@ public class XMLHandler {
 	CodeSource codeSource = XMLHandler.class.getProtectionDomain().getCodeSource();
 	XMLHandler(){
 		try {
-			codeLoc = new File(".");
-			if(!(new File(codeLoc.getPath()+"\\settings.xml").exists())){
+			codeLoc = new File("");
+
+			if(!(new File(codeLoc.getPath()+"settings.xml").exists())){
 				DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder docBuilder;
 				docBuilder = docFactory.newDocumentBuilder();
@@ -30,7 +31,7 @@ public class XMLHandler {
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
 				DOMSource source = new DOMSource(doc);
-				StreamResult result = new StreamResult(codeLoc.getPath()+"\\settings.xml");
+				StreamResult result = new StreamResult(codeLoc.getPath()+"settings.xml");
 				transformer.transform(source, result);
 			}
 		}catch (ParserConfigurationException e) {
@@ -49,7 +50,7 @@ public class XMLHandler {
 	}
 	public void clearXML(){
 		try {
-			if((new File(codeLoc.getPath()+"\\settings.xml").exists())){
+			if((new File(codeLoc.getPath()+"settings.xml").exists())){
 				DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder docBuilder;
 				docBuilder = docFactory.newDocumentBuilder();
@@ -65,7 +66,7 @@ public class XMLHandler {
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
 				DOMSource source = new DOMSource(doc);
-				StreamResult result = new StreamResult(codeLoc.getPath()+"\\settings.xml");
+				StreamResult result = new StreamResult(codeLoc.getPath()+"settings.xml");
 				transformer.transform(source, result);
 			}
 		}catch (ParserConfigurationException e) {
@@ -134,7 +135,7 @@ public class XMLHandler {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(codeLoc.getPath()+"\\settings.xml");
+			StreamResult result = new StreamResult(codeLoc.getPath()+"settings.xml");
 			transformer.transform(source, result);
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -158,7 +159,7 @@ public class XMLHandler {
 		try {
 			docFactory = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			
-			Document document = docFactory.parse(new FileInputStream(codeLoc.getPath()+"\\settings.xml"));
+			Document document = docFactory.parse(new FileInputStream(codeLoc.getPath()+"settings.xml"));
 
 			Element settings = (Element) document.getElementsByTagName("settings").item(0);
 			NodeList percentList = settings.getElementsByTagName("playpercentage").item(0).getChildNodes();
