@@ -16,6 +16,9 @@ maintenance/.vscode/
 maintenance/.metadata/
 *.classpath
 
+# stupid settings xml thing
+.\settings.xml
+
 # Package Files #
 *.jar
 *.war
