@@ -80,11 +80,11 @@ public class EditSongBox implements ActionListener
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 2;
-		panel.add(label5, c);
+		//panel.add(label5, c);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 2;
-		panel.add(box3, c);
+		//panel.add(box3, c);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 3;
@@ -116,7 +116,7 @@ public class EditSongBox implements ActionListener
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 5;
-		panel.add(search, c);
+		//panel.add(search, c);
 		frame.add(panel);
 		frame.setVisible(true);
 		frame.setSize(new Dimension(500, 200));
