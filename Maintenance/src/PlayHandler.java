@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 
 public class PlayHandler {
+	private static String OS;
+	public PlayHandler() {
+		OS = System.getProperty("os.name").toLowerCase();
+	}
 	public static enum Mode
 	{
 		Shuffle,
@@ -53,18 +57,33 @@ public class PlayHandler {
 				if(url.length()!=0)
 				{
 					song.setUrl(url);
-					@SuppressWarnings("unused")
-					Process p = Runtime.getRuntime().exec("open " + song.getURL());
+					if (OS.indexOf("mac") >= 0) {
+						@SuppressWarnings("unused")
+						Process p = Runtime.getRuntime().exec("open " + song.getURL());
+					} else if (OS.indexOf("win") >= 0) {
+						@SuppressWarnings("unused")
+						Process p = Runtime.getRuntime().exec("cmd /c start " + song.getURL());
+					}
 				}
 				else
 				{
-					@SuppressWarnings("unused")
-					Process p = Runtime.getRuntime().exec("open " + song.getURL());
+					if (OS.indexOf("mac") >= 0) {
+						@SuppressWarnings("unused")
+						Process p = Runtime.getRuntime().exec("open " + song.getURL());
+					} else if (OS.indexOf("win") >= 0) {
+						@SuppressWarnings("unused")
+						Process p = Runtime.getRuntime().exec("cmd /c start " + song.getURL());
+					}
 				}
 			}
 			else {
-				@SuppressWarnings("unused")
-				Process p = Runtime.getRuntime().exec("open " + song.getURL());
+				if (OS.indexOf("mac") >= 0) {
+					@SuppressWarnings("unused")
+					Process p = Runtime.getRuntime().exec("open " + song.getURL());
+				} else if (OS.indexOf("win") >= 0) {
+					@SuppressWarnings("unused")
+					Process p = Runtime.getRuntime().exec("cmd /c start " + song.getURL());
+				}
 			}
 		} catch(IOException e1) { e1.printStackTrace(); }
 	}
