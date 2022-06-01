@@ -92,6 +92,8 @@ public class SongCreateBox implements ActionListener, KeyListener
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 4;
+		label3.setVisible(false);
+		box3.setVisible(false);
 		frame.add(panel);
 		frame.setVisible(true);
 		frame.setSize(new Dimension(500, 200));
@@ -144,7 +146,6 @@ public class SongCreateBox implements ActionListener, KeyListener
 			{
 				box1.setText(" ");
 			}
-			
 			if(!(box2.getText().contains("http://") || box2.getText().contains("https://"))) {
 				box2.setText("http://" + box2.getText());
 			}
