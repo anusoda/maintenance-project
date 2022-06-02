@@ -18,6 +18,7 @@ public class Header extends JFrame implements ActionListener{
 	JButton PlayNext;
 	int view;
 	int mode;
+	SongCreateBox createbox;
 	public Header(){
 		super("Juke Box");
 		inside=new JPanel();
@@ -106,7 +107,6 @@ public class Header extends JFrame implements ActionListener{
 		}else if(e.getActionCommand().equals("EXIT")){
 			System.exit(0);
 		}
-		
 		if (e.getActionCommand().equals("ChShuffleMode")){
 			this.changeMode(0);
 			ArrayList<Object> args = new ArrayList<Object>();
