@@ -80,8 +80,8 @@ public class IconView implements MouseListener,MouseMotionListener {
 			mode.add(dormantmode);
 			add(view);
 			add(mode);
-			JMenu newSong = new JMenu("New Song");
-			newSong.setActionCommand("New Song");
+			JMenu newSong = new JMenu("NewSong");
+			newSong.setActionCommand("NewSong");
 			newSong.addActionListener(head);
 			add(newSong);
 			JMenuItem exit = new JMenuItem("Exit");
