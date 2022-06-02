@@ -55,7 +55,6 @@ public class Header extends JFrame implements ActionListener{
 		}
 		menuBar.add(menu);
 		menuBar.add(menu.add(Header.getMenuItem("Exit",KeyEvent.VK_X,this,"EXIT")));
-		
 		this.setJMenuBar(menuBar);
 		
 		CurrSong=new JLabel("");
