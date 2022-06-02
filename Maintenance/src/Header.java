@@ -55,7 +55,7 @@ public class Header extends JFrame implements ActionListener{
 		}
 		menuBar.add(menu);
 		menuBar.add(menu.add(Header.getMenuItem("Exit",KeyEvent.VK_X,this,"EXIT")));
-		menuBar.add(menu.add(Header.getMenuItem("New Song",KeyEvent.VK_N,this,"New Song")));
+		menuBar.add(menu.add(Header.getMenuItem("NewSong",KeyEvent.VK_N,this,"NewSong")));
 		this.setJMenuBar(menuBar);
 		
 		CurrSong=new JLabel("");
@@ -97,7 +97,11 @@ public class Header extends JFrame implements ActionListener{
 	
 	
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().startsWith("Ch")){
+		if (e.getActionCommand().equals("NewSong")){
+			System.out.println("it is getting here");
+			createbox = new SongCreateBox(mnVw);
+		}
+		else if(e.getActionCommand().startsWith("Ch")){
 			if(e.getActionCommand().equals("ChMainView"))
 				changeView(0);
 			else if(e.getActionCommand().equals("ChQueueView"))
@@ -106,8 +110,6 @@ public class Header extends JFrame implements ActionListener{
 				changeView(2);
 		}else if(e.getActionCommand().equals("EXIT")){
 			System.exit(0);
-		}else if (e.getActionCommand().equals("New Song")){
-			createbox = new SongCreateBox(mnVw);
 		}
 		if (e.getActionCommand().equals("ChShuffleMode")){
 			this.changeMode(0);
