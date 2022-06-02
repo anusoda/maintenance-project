@@ -17,7 +17,7 @@ maintenance/.metadata/
 *.classpath
 
 # stupid settings xml thing
-.\settings.xml
+*.xml
 
 # Package Files #
 *.jar
