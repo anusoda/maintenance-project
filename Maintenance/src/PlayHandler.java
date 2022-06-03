@@ -18,7 +18,9 @@ public class PlayHandler {
 	private int playPercentage = 50;
 	private PlayHandler.Mode mode = PlayHandler.Mode.Shuffle;
 	private Song lastSong = null;
-
+	public Song getLastSong(){
+		return lastSong;
+	}
 	public String getLastSongName()
 	{
 		if(lastSong != null)
