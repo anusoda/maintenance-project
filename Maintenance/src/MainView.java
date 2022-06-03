@@ -29,8 +29,9 @@ public class MainView extends View implements ChangeListener, MouseListener{
 	private SongCreateBox createbox;
 	private EditSongBox editbox;
 	private DeleteSongBox deletebox;
+	protected JLabel CurrSong;
 
-	private Song lastSelected = null;
+	protected Song lastSelected = null;
 	private long lastClicked = System.currentTimeMillis();;
 
 	private boolean checkBoxes()
@@ -49,7 +50,6 @@ public class MainView extends View implements ChangeListener, MouseListener{
 
 	public MainView() {
 		super("Main View");
-
 		NewSong=new JButton("New Song");
 		NewSong.setActionCommand("NewSong");
 		NewSong.addActionListener(this);
