@@ -96,15 +96,24 @@ public class PlayHandler {
 		{
 			openBrowser(getRandomSong());
 		}
-		else if(mode == Mode.Queue && Backend.StaticThis.getSongQueue().getSongs().size()>0)
+		else if(mode == Mode.Queue)
 		{
+			if (Backend.StaticThis.getSongQueue().getSongs().size()>0) {
 			openBrowser(Backend.StaticThis.getSongQueue().getSong(0));
 			Backend.StaticThis.getSongQueue().removeSong(0);
+			} else {
+				pop p = new pop(this);
+			}
 		}
 		else if(mode == Mode.Dormant)
 		{
 			return;
 		}
+	}
+
+	public void switchToShuffle() {
+		mode = Mode.Shuffle;
+		playNext();
 	}
 
 	public void playNow(int selectedIndex)
