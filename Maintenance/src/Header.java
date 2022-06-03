@@ -18,6 +18,7 @@ public class Header extends JFrame implements ActionListener{
 	JButton PlayNext;
 	int view;
 	int mode;
+	ClearQueueBox queuebox;
 	SongCreateBox createbox;
 	public Header(){
 		super("Juke Box");
@@ -54,8 +55,15 @@ public class Header extends JFrame implements ActionListener{
 			menu.add(Header.getMenuItem(names[r],keys[r],this,ActComs[r]));
 		}
 		menuBar.add(menu);
+		menu = new JMenu("Queue Actions");
+		menu.setMnemonic(KeyEvent.VK_Q);
+		menu.getAccessibleContext().setAccessibleDescription("Queue Actions");
+		menu.add(Header.getMenuItem("Add Playlist to Queue",KeyEvent.VK_P,this,"addP"));
+		menu.add(Header.getMenuItem("Clear Queue",KeyEvent.VK_C,this,"clearQ"));
+		menuBar.add(menu);
+
 		menuBar.add(menu.add(Header.getMenuItem("Exit",KeyEvent.VK_X,this,"EXIT")));
-		menuBar.add(menu.add(Header.getMenuItem("NewSong",KeyEvent.VK_N,this,"NewSong")));
+		menuBar.add(menu.add(Header.getMenuItem("New Song",KeyEvent.VK_N,this,"New Song")));
 		this.setJMenuBar(menuBar);
 		
 		CurrSong=new JLabel("");
@@ -97,11 +105,15 @@ public class Header extends JFrame implements ActionListener{
 	
 	
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("NewSong")){
-			System.out.println("it is getting here");
+		if (e.getActionCommand().equals("New Song"))
 			createbox = new SongCreateBox(mnVw);
-		}
-		else if(e.getActionCommand().startsWith("Ch")){
+		if (e.getActionCommand().equals("AddP")){
+			ArrayList<Object> data = new ArrayList<Object>();
+			Backend.actionRecieved(new Action(Action.Type.AddFrequentToQueue, data));
+		}	
+		if (e.getActionCommand().equals("clearQ"))
+			queuebox = new ClearQueueBox(quVw);
+		if(e.getActionCommand().startsWith("Ch")){
 			if(e.getActionCommand().equals("ChMainView"))
 				changeView(0);
 			else if(e.getActionCommand().equals("ChQueueView"))
