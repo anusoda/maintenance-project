@@ -2,6 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -21,6 +23,7 @@ public class Header extends JFrame implements ActionListener{
 	boolean iconV;
 	ClearQueueBox queuebox;
 	SongCreateBox createbox;
+	EditSongBox editbox;
 	public Header(){
 		super("Juke Box");
 		iconV = false;
@@ -70,6 +73,20 @@ public class Header extends JFrame implements ActionListener{
 		this.setJMenuBar(menuBar);
 		
 		CurrSong=new JLabel("");
+		CurrSong.addMouseListener(new MouseListener(){
+			public void mouseClicked(MouseEvent e) {
+				Song lSong = Backend.StaticThis.getPlayHandler().getLastSong();
+				if (lSong!=null){
+					editbox=new EditSongBox(lSong.getName(),
+								lSong.getURL(), lSong.getArtist(), lSong.getLastPlayed(),
+								mnVw.lastSelected.getFrequency(), mnVw.list.getSelectedIndex(), mnVw);
+				}
+			}
+			public void mousePressed(MouseEvent e) {}
+			public void mouseReleased(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseExited(MouseEvent e) {}
+		});
 		PlayMode=new JLabel("| Queue");
 		PlayNext=new JButton("Play Next");
 		PlayNext.setActionCommand("PlayNext");
@@ -110,7 +127,7 @@ public class Header extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("New Song"))
 			createbox = new SongCreateBox(mnVw);
-		if (e.getActionCommand().equals("AddP")){
+		if (e.getActionCommand().equals("addP")){
 			ArrayList<Object> data = new ArrayList<Object>();
 			Backend.actionRecieved(new Action(Action.Type.AddFrequentToQueue, data));
 		}	
