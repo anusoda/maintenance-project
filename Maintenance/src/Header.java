@@ -18,10 +18,12 @@ public class Header extends JFrame implements ActionListener{
 	JButton PlayNext;
 	int view;
 	int mode;
+	boolean iconV;
 	ClearQueueBox queuebox;
 	SongCreateBox createbox;
 	public Header(){
 		super("Juke Box");
+		iconV = false;
 		inside=new JPanel();
 		
 		mnVw=new MainView();
@@ -55,15 +57,16 @@ public class Header extends JFrame implements ActionListener{
 			menu.add(Header.getMenuItem(names[r],keys[r],this,ActComs[r]));
 		}
 		menuBar.add(menu);
-		menu = new JMenu("Queue Actions");
-		menu.setMnemonic(KeyEvent.VK_Q);
-		menu.getAccessibleContext().setAccessibleDescription("Queue Actions");
-		menu.add(Header.getMenuItem("Add Playlist to Queue",KeyEvent.VK_P,this,"addP"));
-		menu.add(Header.getMenuItem("Clear Queue",KeyEvent.VK_C,this,"clearQ"));
-		menuBar.add(menu);
-
+		if (iconV){
+			menu = new JMenu("Queue Actions");
+			menu.setMnemonic(KeyEvent.VK_Q);
+			menu.getAccessibleContext().setAccessibleDescription("Queue Actions");
+			menu.add(Header.getMenuItem("Add Playlist to Queue",KeyEvent.VK_P,this,"addP"));
+			menu.add(Header.getMenuItem("Clear Queue",KeyEvent.VK_C,this,"clearQ"));
+			menuBar.add(menu);
+			menuBar.add(menu.add(Header.getMenuItem("New Song",KeyEvent.VK_N,this,"New Song")));
+		}
 		menuBar.add(menu.add(Header.getMenuItem("Exit",KeyEvent.VK_X,this,"EXIT")));
-		menuBar.add(menu.add(Header.getMenuItem("New Song",KeyEvent.VK_N,this,"New Song")));
 		this.setJMenuBar(menuBar);
 		
 		CurrSong=new JLabel("");
@@ -114,12 +117,18 @@ public class Header extends JFrame implements ActionListener{
 		if (e.getActionCommand().equals("clearQ"))
 			queuebox = new ClearQueueBox(quVw);
 		if(e.getActionCommand().startsWith("Ch")){
-			if(e.getActionCommand().equals("ChMainView"))
+			if(e.getActionCommand().equals("ChMainView")){
+				iconV = false;
 				changeView(0);
-			else if(e.getActionCommand().equals("ChQueueView"))
+			}
+			else if(e.getActionCommand().equals("ChQueueView")){
+				iconV = false;
 				changeView(1);
-			else if(e.getActionCommand().equals("ChIconView"))
+			}
+			else if(e.getActionCommand().equals("ChIconView")){
+				iconV = true;
 				changeView(2);
+			}
 		}else if(e.getActionCommand().equals("EXIT")){
 			System.exit(0);
 		}
