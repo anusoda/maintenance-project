@@ -75,11 +75,13 @@ public class Header extends JFrame implements ActionListener{
 		CurrSong=new JLabel("");
 		CurrSong.addMouseListener(new MouseListener(){
 			public void mouseClicked(MouseEvent e) {
-				Song lSong = Backend.StaticThis.getPlayHandler().getLastSong();
-				if (lSong!=null){
-					editbox=new EditSongBox(lSong.getName(),
-								lSong.getURL(), lSong.getArtist(), lSong.getLastPlayed(),
-								mnVw.lastSelected.getFrequency(), mnVw.list.getSelectedIndex(), mnVw);
+				if(mnVw.checkBoxes()){
+					Song lSong = Backend.StaticThis.getPlayHandler().getLastSong();
+					if (lSong!=null){
+						editbox=new EditSongBox(lSong.getName(),
+									lSong.getURL(), lSong.getArtist(), lSong.getLastPlayed(),
+									mnVw.lastSelected.getFrequency(), mnVw.list.getSelectedIndex(), mnVw);
+					}
 				}
 			}
 			public void mousePressed(MouseEvent e) {}
