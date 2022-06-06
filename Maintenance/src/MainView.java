@@ -27,7 +27,7 @@ public class MainView extends View implements ChangeListener, MouseListener{
 	private JLabel percent;
 	private int sliderValue;
 	private SongCreateBox createbox;
-	private EditSongBox editbox;
+	protected EditSongBox editbox;
 	private DeleteSongBox deletebox;
 	protected JLabel CurrSong;
 
