@@ -26,9 +26,9 @@ public class MainView extends View implements ChangeListener, MouseListener{
 	private JSlider ActiveSong;
 	private JLabel percent;
 	private int sliderValue;
-	private SongCreateBox createbox;
+	protected SongCreateBox createbox;
 	protected EditSongBox editbox;
-	private DeleteSongBox deletebox;
+	protected DeleteSongBox deletebox;
 	protected JLabel CurrSong;
 
 	protected Song lastSelected = null;
