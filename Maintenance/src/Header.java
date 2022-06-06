@@ -23,7 +23,7 @@ public class Header extends JFrame implements ActionListener{
 	boolean iconV;
 	ClearQueueBox queuebox;
 	SongCreateBox createbox;
-	EditSongBox editbox;
+	//EditSongBox editbox;
 	public Header(){
 		super("Juke Box");
 		iconV = false;
@@ -78,7 +78,7 @@ public class Header extends JFrame implements ActionListener{
 				if(mnVw.checkBoxes()){
 					Song lSong = Backend.StaticThis.getPlayHandler().getLastSong();
 					if (lSong!=null){
-						editbox=new EditSongBox(lSong.getName(),
+						mnVw.editbox=new EditSongBox(lSong.getName(),
 									lSong.getURL(), lSong.getArtist(), lSong.getLastPlayed(),
 									lSong.getFrequency(), mnVw.list.getSelectedIndex(), mnVw);
 					}
