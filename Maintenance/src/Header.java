@@ -80,7 +80,7 @@ public class Header extends JFrame implements ActionListener{
 					if (lSong!=null){
 						editbox=new EditSongBox(lSong.getName(),
 									lSong.getURL(), lSong.getArtist(), lSong.getLastPlayed(),
-									mnVw.lastSelected.getFrequency(), mnVw.list.getSelectedIndex(), mnVw);
+									lSong.getFrequency(), mnVw.list.getSelectedIndex(), mnVw);
 					}
 				}
 			}
