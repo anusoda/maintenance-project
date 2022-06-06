@@ -12,7 +12,7 @@ import javax.swing.event.ListSelectionEvent;
 @SuppressWarnings("serial")
 public class QueueView extends View {
 	
-	private ClearQueueBox queuebox;
+	protected ClearQueueBox queuebox;
 	
 	public QueueView() {
 		super("Queue View");
@@ -26,7 +26,7 @@ public class QueueView extends View {
 		this.add(clear);
 	}
 	
-	private boolean checkBoxes()
+	protected boolean checkBoxes()
 	{
 		if(queuebox != null)
 			if(queuebox.isVisible())
