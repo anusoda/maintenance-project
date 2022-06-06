@@ -21,8 +21,8 @@ public class Header extends JFrame implements ActionListener{
 	int view;
 	int mode;
 	boolean iconV;
-	ClearQueueBox queuebox;
-	SongCreateBox createbox;
+	//ClearQueueBox queuebox;
+	//SongCreateBox createbox;
 	//EditSongBox editbox;
 	public Header(){
 		super("Juke Box");
@@ -130,13 +130,15 @@ public class Header extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("New Song"))
-			createbox = new SongCreateBox(mnVw);
+			if(mnVw.checkBoxes())
+				mnVw.createbox = new SongCreateBox(mnVw);
 		if (e.getActionCommand().equals("addP")){
 			ArrayList<Object> data = new ArrayList<Object>();
 			Backend.actionRecieved(new Action(Action.Type.AddFrequentToQueue, data));
 		}	
 		if (e.getActionCommand().equals("clearQ"))
-			queuebox = new ClearQueueBox(quVw);
+			if(quVw.checkBoxes())
+				quVw.queuebox = new ClearQueueBox(quVw);
 		if(e.getActionCommand().startsWith("Ch")){
 			if(e.getActionCommand().equals("ChMainView")){
 				iconV = false;
