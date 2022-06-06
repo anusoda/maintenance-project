@@ -34,7 +34,7 @@ public class MainView extends View implements ChangeListener, MouseListener{
 	protected Song lastSelected = null;
 	private long lastClicked = System.currentTimeMillis();;
 
-	private boolean checkBoxes()
+	protected boolean checkBoxes()
 	{
 		if(createbox != null)
 			if(createbox.isVisible())
