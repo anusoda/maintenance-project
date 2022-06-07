@@ -12,6 +12,7 @@ class pop extends JFrame implements ActionListener {
         pH=playHandler;
         // create a frame
         f = new JFrame("empty queue");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         // create a label
         JLabel l = new JLabel("The queue is empty.");
@@ -55,15 +56,16 @@ public void actionPerformed(ActionEvent e)
 {
     if (e.getActionCommand().equals("switch to shuffle")) {
         pH.switchToShuffle();
-    } else {
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    if(e.getActionCommand().equals("dismiss")){
+        f.dispose();
     }
  //p.show();
 }
 // main class
-public static void main(String args[])
-{
-    PlayHandler ph = new PlayHandler();
- pop p = new pop(ph);
-}
+//public static void main(String args[])
+//{
+//    PlayHandler ph = new PlayHandler();
+// pop p = new pop(ph);
+//}
 }
