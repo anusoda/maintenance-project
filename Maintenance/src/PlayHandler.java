@@ -120,7 +120,6 @@ public class PlayHandler {
 		mode = Mode.Shuffle;
 		header.changeMode(0);
 		header.setDefaultCloseOperation(header.EXIT_ON_CLOSE);
-		header.pack();
 		header.setVisible(true);
 		playNext();
 	}
