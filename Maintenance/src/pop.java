@@ -56,10 +56,10 @@ public void actionPerformed(ActionEvent e)
 {
     if (e.getActionCommand().equals("switch to shuffle")) {
         pH.switchToShuffle();
+       
     }
-    if(e.getActionCommand().equals("dismiss")){
-        f.dispose();
-    }
+    
+    f.dispose();
  //p.show();
 }
 // main class
