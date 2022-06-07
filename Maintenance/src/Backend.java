@@ -67,7 +67,7 @@ public class Backend {
 		
 		Backend backend = new Backend(xHandler, settings, queue, liberry, pHandler);
 		Frame = new Header();
-		pHandler.setHeader(Frame);
+		
 		Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Frame.pack();
 		Frame.setVisible(true);
