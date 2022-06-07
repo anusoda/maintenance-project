@@ -6,13 +6,8 @@ import java.util.ArrayList;
 
 public class PlayHandler {
 	private static String OS;
-	private Header header;
 	public PlayHandler() {
 		OS = System.getProperty("os.name").toLowerCase();
-	}
-
-	public void setHeader(Header frame) {
-		header=frame;
 	}
 	public static enum Mode
 	{
@@ -118,10 +113,6 @@ public class PlayHandler {
 
 	public void switchToShuffle() {
 		mode = Mode.Shuffle;
-		header.changeMode(0);
-		header.setDefaultCloseOperation(header.EXIT_ON_CLOSE);
-		header.pack();
-		header.setVisible(true);
 		playNext();
 	}
 
