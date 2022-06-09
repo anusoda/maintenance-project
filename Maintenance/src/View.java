@@ -77,37 +77,19 @@ public abstract class View extends JPanel implements ActionListener ,ListSelecti
                     DefaultListModel listModel = (DefaultListModel)list.getModel();
                     int index = dl.getIndex();
                     boolean insert = dl.isInsert();
-                    //System.out.println("insert:"+insert);
-                    // Get the current string under the drop.
-//                    String value = listModel.getElementAt(index).toString();
-     
-                    // Get the string that is being dropped.
-//                    Transferable t = info.getTransferable();
-//                    String data="Song Trans";
-//                    try {
-//                        data = t.getTransferData(new SongDataFlavor()).toString();
-//                    }
-//                    catch (Exception e) { return false; }
-//                     
-//                    // Display a dialog with the drop information.
-//                    String dropValue = "\"" + data + "\" dropped ";
-                    //System.out.println("STarinnkgsdklajwrfhasjkfhaweklrje");
                     if (dl.isInsert()) {
-                    	//System.out.println("enz:"+dl.getIndex());
                         if (dl.getIndex() <= 0) {
                         	//System.out.println("0");
                         	ArrayList<Object> objs=new ArrayList<Object>(2);
                         	objs.add((list.getSelectedIndex()));
                             objs.add((0));
                             Backend.actionRecieved(new Action(Action.Type.InsertSong,objs));
-//                        	displayDropLocation(dropValue + "at beginning of list");
                         } else if (dl.getIndex() >= list.getModel().getSize()) {
                         	//System.out.println("large");
                         	ArrayList<Object> objs=new ArrayList<Object>(2);
                         	objs.add((list.getSelectedIndex()));
                             objs.add((list.getModel().getSize()));
                             Backend.actionRecieved(new Action(Action.Type.InsertSong,objs));
-//                            displayDropLocation(dropValue + "at end of list");
                         } else {
                         	//System.out.println("between");
                             String value1 = list.getModel().getElementAt(dl.getIndex() - 1).toString();
@@ -116,31 +98,11 @@ public abstract class View extends JPanel implements ActionListener ,ListSelecti
                             objs.add((list.getSelectedIndex()));
                             objs.add((dl.getIndex()));
                             Backend.actionRecieved(new Action(Action.Type.InsertSong,objs));
-//                            displayDropLocation(dropValue + "between \"" + value1 + "\" and \"" + value2 + "\"");
                         }
                         updateList();
                     } else {
                     	System.out.println("on top");
-//                    	ArrayList<Object> objs=new ArrayList<Object>(2);
-//                        objs.add((list.getSelectedIndex()));
-//                        objs.add((dl.getIndex()));
-//                        Backend.actionRecieved(new Action(Action.Type.SwapSongs,objs));
-//                        updateList();
-//                        displayDropLocation(dropValue + "on top of " + "\"" + value + "\"");
                     }
-                     
-            /**  This is commented out for the basicdemo.html tutorial page.
-                     **  If you add this code snippet back and delete the
-                     **  "return false;" line, the list will accept drops
-                     **  of type string.
-                    // Perform the actual import. 
-                    if (insert) {
-                        listModel.add(index, data);
-                    } else {
-                        listModel.set(index, data);
-                    }
-                    return true;
-            */
                     return false;
                 }
                  
@@ -149,21 +111,6 @@ public abstract class View extends JPanel implements ActionListener ,ListSelecti
                     return COPY;
                 }
                  
-//                protected Transferable createTransferable(JComponent c) {
-//                	System.out.println("creating transferable");
-//                    JList list = (JList)c;
-//                    Object[] values = list.getSelectedValues();
-//             
-//                    StringBuffer buff = new StringBuffer();
-//                    for (int i = 0; i < values.length; i++) {
-//                        Object val = values[i];
-//                        buff.append(val == null ? "" : val.toString());
-//                        if (i != values.length - 1) {
-//                            buff.append("\n");
-//                        }
-//                    }
-//                    return new StringSelection(buff.toString());
-//                }
                 protected Transferable createTransferable(JComponent c) {
         	    	//System.out.println("creating Transf");
         	        JList list = (JList)c;
@@ -220,12 +167,6 @@ public abstract class View extends JPanel implements ActionListener ,ListSelecti
 	}
 	private void displayDropLocation(final String string) {
 		return;
-//		System.out.println("disp:"+string);
-//        SwingUtilities.invokeLater(new Runnable() {
-//            public void run() {
-//                JOptionPane.showMessageDialog(null, string);
-//            }
-//        });
     }
 	
 	
@@ -236,7 +177,6 @@ public abstract class View extends JPanel implements ActionListener ,ListSelecti
 			item.addActionListener(this);
 			popMenu.add(item);
 		}
-		
 		
 	}
 	public void updateList(ArrayList<Song> songs){

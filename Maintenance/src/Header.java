@@ -152,7 +152,7 @@ public class Header extends JFrame implements ActionListener{
 				iconV = true;
 				changeView(2);
 			}
-		}else if(e.getActionCommand().equals("EXIT")){
+		} else if(e.getActionCommand().equals("EXIT")){
 			System.exit(0);
 		}
 		if (e.getActionCommand().equals("ChShuffleMode")){
