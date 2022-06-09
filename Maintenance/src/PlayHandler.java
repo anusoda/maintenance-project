@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class PlayHandler {
 	private static String OS;
+	private static pop emptyQueue;
 	private Header header;
 	public PlayHandler() {
 		OS = System.getProperty("os.name").toLowerCase();
@@ -107,7 +108,9 @@ public class PlayHandler {
 			openBrowser(Backend.StaticThis.getSongQueue().getSong(0));
 			Backend.StaticThis.getSongQueue().removeSong(0);
 			} else {
-				pop p = new pop(this);
+				if (emptyQueue==null) {
+					emptyQueue = new pop(this);
+				} 
 			}
 		}
 		else if(mode == Mode.Dormant)
