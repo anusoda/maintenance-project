@@ -19,7 +19,6 @@ public class EditSongBox implements ActionListener
 	JRadioButton dontPlay = new JRadioButton("Dont Play");
 	JRadioButton play = new JRadioButton("Play");
 	JRadioButton frequent = new JRadioButton("Frequent Playlist");
-	JButton search = new JButton("  Search  ");
 	private int index;
 	public boolean isVisible()
 	{
@@ -46,14 +45,14 @@ public class EditSongBox implements ActionListener
 		JLabel label3 = new JLabel("Last Played: ");
 		JLabel label5 = new JLabel("Enter song artist: ");
 		Date date = new Date(time);
-		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a E");
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
 		String dateFormatted = formatter.format(date);
 		JLabel label4 = new JLabel(dateFormatted.toString());
 		JButton ok = new JButton("Done");
 		ok.addActionListener(this);
 		JButton cancel = new JButton("Cancel");
 		cancel.addActionListener(this);
-		search.addActionListener(this);
+		
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		ButtonGroup group = new ButtonGroup();
@@ -134,16 +133,16 @@ public class EditSongBox implements ActionListener
 				if(url.length()!=0)
 				{
 					box2.setText(url);
-					search.setText("   Found   ");
+					
 				}
 				else
 				{
-					search.setText(" Not Found ");
+				
 				}
 			}
 			else
 			{
-				search.setText("  Search  ");
+			
 			}
 		}
 		if(arg0.getActionCommand().equals("Cancel"))
