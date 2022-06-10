@@ -7,7 +7,7 @@ class pop extends JFrame implements ActionListener {
     private PlayHandler pH;
     private JFrame f;
     // constructor
-    pop(PlayHandler playHandler)
+    pop(PlayHandler playHandler, boolean visible)
     {
         pH=playHandler;
         // create a frame
@@ -50,6 +50,7 @@ class pop extends JFrame implements ActionListener {
  p1.add(switchToShuffle);
  f.add(p1);
  f.show();
+ f.setVisible(visible);
 }
 
 // if the button is pressed
@@ -58,7 +59,7 @@ public void actionPerformed(ActionEvent e)
     if (e.getActionCommand().equals("switch to shuffle")) {
         pH.switchToShuffle();
     }
-    f.dispose();
+    f.setVisible(false);
  //p.show();
 }
 // main class

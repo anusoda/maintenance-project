@@ -6,10 +6,11 @@ import java.util.ArrayList;
 
 public class PlayHandler {
 	private static String OS;
-	private static pop emptyQueue;
+	private static boolean emptyQueuePop=false;
 	private Header header;
 	public PlayHandler() {
 		OS = System.getProperty("os.name").toLowerCase();
+		
 	}
 	public static enum Mode
 	{
@@ -108,8 +109,9 @@ public class PlayHandler {
 			openBrowser(Backend.StaticThis.getSongQueue().getSong(0));
 			Backend.StaticThis.getSongQueue().removeSong(0);
 			} else {
-				if (emptyQueue==null) {
-					emptyQueue = new pop(this);
+				if (emptyQueuePop==false) {
+					pop eQP = new pop(this, true);
+					emptyQueuePop=true;
 				} 
 			}
 		}
