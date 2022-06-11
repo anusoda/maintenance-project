@@ -59,9 +59,16 @@ public void actionPerformed(ActionEvent e)
     if (e.getActionCommand().equals("switch to shuffle")) {
         pH.switchToShuffle();
     }
-    pH.emptyQueuePop=false;
     f.setVisible(false);
  //p.show();
+}
+
+public boolean isVisible() {
+    return f.isVisible();
+}
+
+public void show() {
+    f.setVisible(true);
 }
 // main class
 public static void main(String args[])

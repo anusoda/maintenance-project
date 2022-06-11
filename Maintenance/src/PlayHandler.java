@@ -110,8 +110,8 @@ public class PlayHandler {
 			openBrowser(Backend.StaticThis.getSongQueue().getSong(0));
 			Backend.StaticThis.getSongQueue().removeSong(0);
 			} else {
-				if (!emptyQueue.f.isVisible()) {
-					emptyQueue.f.setVisible(true);
+				if (!emptyQueue.isVisible()) {
+					emptyQueue.show();
 				} 
 			}
 		}
