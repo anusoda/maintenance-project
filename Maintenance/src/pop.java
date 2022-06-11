@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-class pop extends JFrame implements ActionListener {
+class pop implements ActionListener {
     // popup
     Popup p;
     private PlayHandler pH;
-    private JFrame f;
+    JFrame f;
     // constructor
     pop(PlayHandler playHandler, boolean visible)
     {
@@ -59,13 +59,14 @@ public void actionPerformed(ActionEvent e)
     if (e.getActionCommand().equals("switch to shuffle")) {
         pH.switchToShuffle();
     }
+    pH.emptyQueuePop=false;
     f.setVisible(false);
  //p.show();
 }
 // main class
-//public static void main(String args[])
-//{
-//    PlayHandler ph = new PlayHandler();
-// pop p = new pop(ph);
-//}
+public static void main(String args[])
+{
+    PlayHandler ph = new PlayHandler();
+ pop p = new pop(ph, true);
+}
 }
