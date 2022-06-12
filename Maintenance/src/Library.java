@@ -43,6 +43,15 @@ public class Library {
 	public Song getSong(int index) {
 		return lib.get(index);
 	}
+	public Song getSong(Song s){
+		int idx = -1;
+		for (int i=0; i<lib.size(); i++){
+			if (lib.get(i).equals(s)){
+				idx = i;
+			}
+		}
+		return lib.get(idx);
+	}
 	/*
 	 * public void selectSong(int index){ selectIndex=index; } public int
 	 * getSelectedSongIndex(){ return selectIndex; } public Song
