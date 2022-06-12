@@ -20,6 +20,12 @@ public class Song {
 		frequent = f;
 		dynamic = d;
 	}
+	public boolean equals(Song s){
+		if (s.getName().equals(songName)&&s.getURL().equals(songURL)&&s.getLastPlayed()==lastPlayed&&s.getFrequency()==frequent&&s.getDynamic()==dynamic){
+			return true;
+		}
+		return false;
+	}
 	public void setDynamic(boolean d){
 		dynamic = d;
 	}
