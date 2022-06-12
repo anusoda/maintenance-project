@@ -82,7 +82,6 @@ public class Backend {
 			URL = (String) e.getData().get(1);
 			int frequency = (Integer) e.getData().get(2);
 			boolean dynamic = (Boolean) e.getData().get(3);
-			System.out.println(dynamic);
 			Song song = new Song(name, URL, frequency, dynamic);
 			if(dynamic)
 				song.setArtist((String) e.getData().get(4));
@@ -93,9 +92,14 @@ public class Backend {
 			String name = (String) e.getData().get(0);
 			String URL = (String) e.getData().get(1);
 			int index=(Integer) e.getData().get(2);
+			System.out.println("index: "+index);
 			int frequency = (Integer) e.getData().get(3);
 			boolean dynamic = (Boolean) e.getData().get(4);
-			Song song = StaticThis.classLiberry.getSong(index);
+			Song song;
+			if (index==-1)
+				song = StaticThis.classLiberry.getSong((Song) e.getData().get(5));
+			else
+				song = StaticThis.classLiberry.getSong(index);
 			song.setName(name);
 			song.setUrl(URL);
 			song.setFrequency(frequency);
