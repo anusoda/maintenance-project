@@ -122,12 +122,14 @@ public class PlayHandler {
 	}
 
 	public void switchToShuffle() {
-		mode = Mode.Shuffle;
-		header.changeMode(0);
-		header.setDefaultCloseOperation(header.EXIT_ON_CLOSE);
-		header.setVisible(true);
-		playNext();
-	}
+        mode = Mode.Shuffle;
+        header.changeMode(0);
+        playNext();
+        header.setCurrSong();
+        header.setDefaultCloseOperation(header.EXIT_ON_CLOSE);
+        header.setVisible(true);
+    }
+
 
 	public void playNow(int selectedIndex)
 	{

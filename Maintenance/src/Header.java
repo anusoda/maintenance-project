@@ -239,4 +239,8 @@ public class Header extends JFrame implements ActionListener{
 			
 		}
 	}
+	public void setCurrSong() {
+        CurrSong.setText(Backend.StaticThis.getPlayHandler().getLastSongName());
+    }
+
 }
