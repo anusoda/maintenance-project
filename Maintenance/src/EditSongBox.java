@@ -20,6 +20,7 @@ public class EditSongBox implements ActionListener
 	JRadioButton play = new JRadioButton("Play");
 	JRadioButton frequent = new JRadioButton("Frequent Playlist");
 	private int index;
+	Song thisSong;
 	public boolean isVisible()
 	{
 		return frame.isVisible();
@@ -121,7 +122,103 @@ public class EditSongBox implements ActionListener
 		frame.setSize(new Dimension(500, 200));
 		frame.pack();
 	}
-
+	public EditSongBox(String name, String url, String artist, long time, int f, int songindex, View v, Song s)
+	{
+		thisSong = s;
+		frame.setResizable(false);
+		vw=v;
+		index = songindex;
+		box1.setText(name);
+		box2.setText(url);
+		box3.setText(artist);
+		if(f == 0)
+			dontPlay.setSelected(true);
+		else if(f ==1)
+			play.setSelected(true);
+		else if(f == 2)
+			frequent.setSelected(true);
+		JPanel panel = new JPanel();
+		JLabel label1 = new JLabel("Enter song name:                              ");
+		JLabel label2 = new JLabel("Enter song url: ");
+		JLabel label3 = new JLabel("Last Played: ");
+		JLabel label5 = new JLabel("Enter song artist: ");
+		Date date = new Date(time);
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a E");
+		String dateFormatted = formatter.format(date);
+		JLabel label4 = new JLabel(dateFormatted.toString());
+		JButton ok = new JButton("Done");
+		ok.addActionListener(this);
+		JButton cancel = new JButton("Cancel");
+		cancel.addActionListener(this);
+		//search.addActionListener(this);
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		ButtonGroup group = new ButtonGroup();
+	    group.add(dontPlay);
+	    group.add(play);
+	    group.add(frequent);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.insets = new Insets(0,0,10,0);
+		panel.add(label1, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 0;
+		panel.add(box1, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 1;
+		panel.add(label2, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 1;
+		panel.add(box2, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 2;
+		//panel.add(label5, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 2;
+		//panel.add(box3, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 3;
+		panel.add(label3, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 3;
+		panel.add(label4, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 4;
+		panel.add(dontPlay, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 4;
+		panel.add(play, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 2;
+		c.gridy = 4;
+		panel.add(frequent, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 5;
+		panel.add(ok, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 5;
+		panel.add(cancel, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 2;
+		c.gridy = 5;
+		//panel.add(search, c);
+		frame.add(panel);
+		frame.setVisible(true);
+		frame.setSize(new Dimension(500, 200));
+		frame.pack();
+	}
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		if(arg0.getActionCommand().equals("  Search  ") || arg0.getActionCommand().equals(" Not Found ") || arg0.getActionCommand().equals("   Found   "))
@@ -178,6 +275,10 @@ public class EditSongBox implements ActionListener
 			}
 			else
 				data.add(false);
+			if (index==-1){
+				System.out.println(thisSong);
+				data.add(thisSong);
+			}
 			Action a = new Action(Action.Type.EditSong, data);
 			Backend.actionRecieved(a);
 			vw.updateList();
