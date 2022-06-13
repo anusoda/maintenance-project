@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class PlayHandler {
 	private static String OS;
-	boolean emptyQueuePop=false;
 	pop emptyQueue;
 	private Header header;
 	public PlayHandler() {
