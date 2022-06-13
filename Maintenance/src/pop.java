@@ -71,9 +71,5 @@ public void show() {
     f.setVisible(true);
 }
 // main class
-public static void main(String args[])
-{
-    PlayHandler ph = new PlayHandler();
- pop p = new pop(ph, true);
-}
+
 }
